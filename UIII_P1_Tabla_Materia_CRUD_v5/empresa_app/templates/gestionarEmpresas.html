@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row"><!--La Fila-->
+<class="col-sm-12 col-md-4 col-lg-4 col-x1-4"><!-- columna izquierda-->
+    <h1>Mama</h1>
+    <div class="card"> <!-- tarjeta -->
+        <div class="card-body">
+            <form action="/registrarEmpresa/" method="POST"> {% csrf_token %} <!-- formulario-->
+                <div class="form-group">
+                    <input type="text" id="txtid" name="txtid" class="form-control"
+                    placeholder="Codigo Empresa" minLength="6" maxLength="6" required >
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    placeholder="Nombre Empresa" minLength="6" maxLength="100" required >
+                </div>
+                <div class="form-group py-2">
+                    <input type="text" id="txtubicacion" name="txtubicacion" class="form-control"
+                    placeholder="Ubicacion" minLength="6" maxLength="100" required >
+                </div>
+                <div class="form-group py-2">
+                    <input type="text" id="num_telefono" name="num_telefono" class="form-control"
+                    placeholder="Numero de Telefono" minLength="6" maxLength="100" required >
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                    placeholder="Correo" minLength="6" maxLength="6" required >
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtdueño" name="txtdueño" class="form-control"
+                    placeholder="Dueño" minLength="6" maxLength="100" required >
+                </div>
+                <div class="form-group py-2">
+                    <input type="text" id="txtempleados" name="txtempleados" class="form-control"
+                    placeholder="Empleados" minLength="6" maxLength="100" required >
+                </div>
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form> <!-- formulario-->
+        </div>
+        </div>
+</div><!-- columna izquierda-->
+<div class="col-sm-12 col-md-8 col-lg-8 col-x1-4"><!-- columna derecha-->
+    <h1>Empresa</h1>
+<img class="w-50" scr="{% static 'img/Tienda.wepb' %}" alt "Trulli" width="400" heigth="400"/>
+<br><br>
+<div class="table-responsive"><!-- tabla responsiva-->
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Ubicacion</th>
+            <th scope="col">Numero de Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Dueño</th>
+            <th scope="col">Empleados</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misempresas %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{m.id}}</td>
+                <td>{{m.nombre}}</td>
+                <td>{{m.ubicacion}}</td>
+                <td>{{m.num_telefono}}</td>
+                <td>{{m.correo}}</td>
+                <td>{{m.dueño}}</td>
+                <td>{{m.empleados}}</td>
+                <td><a href="seleccionarEmpresa/{{m.id}}" class="btn btn-info">Editar</a></td>
+                <td><a href="borrarEmpresa/{{m.id}}" class="btn btn-danger">Borrar</a></td>
+            </tr>
+            
+            
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div><!-- columna derecha-->
+</div><!--La Fila-->
+{% endblock %}
