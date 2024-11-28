@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 pffset-md-4">
+        <!--la tarjeta card-->
+        <div class="card"> <!-- tarjeta -->
+            <div class="card-body">
+                <form action="/editarEmpresa/" method="POST"> {% csrf_token %} <!-- formulario-->
+                    
+                    <div class="form-group">
+                        <input type="text" id="txtid" name="txtid" class="form-control"
+                        value="{{misempresas.id}}" minLength="6" maxLength="6" readonly required >
+                    </div>
+    
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                        value="{{misempresas.nombre}}"minLength="6" maxLength="100" required >
+                    </div>
+                    
+                    <div class="form-group py-2">
+                        <input type="text" id="txtubicacion" name="txtubicacion" class="form-control"
+                        value="{{misempresas.ubicacion}}"min="1" max="9" required >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="num_telefono" name="num_telefono" class="form-control"
+                        value="{{misempresas.num_telefono}}" minLength="6" maxLength="6" readonly required >
+                    </div>
+    
+                    <div class="form-group py-3">
+                        <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                        value="{{misempresas.correo}}"minLength="6" maxLength="100" required >
+                    </div>
+                    
+                    <div class="form-group py-2">
+                        <input type="text" id="txtdueño" name="txtdueño" class="form-control"
+                        value="{{misempresas.dueño}}"min="1" max="9" required >
+
+                        <div class="form-group">
+                            <input type="text" id="txtempleados" name="txtempleados" class="form-control"
+                            value="{{misempresas.empleados}}" minLength="6" maxLength="6" readonly required >
+                        </div>
+
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form> <!-- formulario-->
+            </div>
+            </div>
+
+        <!--fin de la tarjeta card-->
+
+    </div> <!--columna-->
+</div> <!--fila-->
+
+
+{% endblock %}
