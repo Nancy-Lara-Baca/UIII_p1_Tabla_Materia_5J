@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 pffset-md-4">
+        <!--la tarjeta card-->
+        <div class="card"> <!-- tarjeta -->
+            <div class="card-body">
+                <form action="/editarProductos/" method="POST"> {% csrf_token %} <!-- formulario-->
+                    
+                    <div class="form-group">
+                        <input type="text" id="txtid_producto" name="txtid_producto" class="form-control"
+                        value="{{misproductos.id_producto}}" minLength="6" maxLength="6" readonly required >
+                    </div>
+    
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                        value="{{misproductos.nombre}}"minLength="6" maxLength="100" required >
+                    </div>
+                    
+                    <div class="form-group py-2">
+                        <input type="text" id="txtcantidad_productos" name="txtcantidad_productos" class="form-control"
+                        value="{{misproductos.cantidad_productos}}"min="1" max="9" required >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="txtprecio" name="txtprecio" class="form-control"
+                        value="{{misproductos.precio}}" minLength="6" maxLength="6" readonly required >
+                    </div>
+    
+                    <div class="form-group py-3">
+                        <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control"
+                        value="{{misproductos.descripcion}}"minLength="6" maxLength="100" required >
+                    </div>
+                    
+
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form> <!-- formulario-->
+            </div>
+            </div>
+
+        <!--fin de la tarjeta card-->
+
+    </div> <!--columna-->
+</div> <!--fila-->
+
+
+{% endblock %}
